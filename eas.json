@@ -1,7 +1,12 @@
 {
   "build": {
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "build":[
+        "android",
+        "ios",
+        "web"
+      ]
     }
   }
 }
