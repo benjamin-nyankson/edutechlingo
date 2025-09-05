@@ -1,4 +1,6 @@
+import { appName } from "@/constants/constants";
 import { Ionicons } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
 import { router } from "expo-router";
 import { ReactNode } from "react";
 import {
@@ -13,21 +15,30 @@ interface Iprops {
   children: ReactNode;
 }
 const AppLayout = ({ children }: Iprops) => {
+  const route = useRoute();
   return (
     <SafeAreaView className="flex-1 mb-10 bg-bgColor">
       <View className="flex-row items-center justify-between px-4 py-3 bg-primary-500">
+        {/* Back Button */}
+        {route.name !== "choose-language" && (
+          <TouchableOpacity onPress={() => router.back()}>
+            <Ionicons name="arrow-back-outline" size={24} color="white" />
+          </TouchableOpacity>
+        )}
+
         {/* Logo + Title */}
-        <TouchableOpacity onPress={()=>router.push("/choose-language")}>
-        <View className="flex-row items-center" >
+        <View className="flex-row items-center">
           <Ionicons name="book-outline" size={24} color="white" />
-          <Text className="text-white text-lg font-bold ml-2">
-            EduTechLingo
+          <Text className="text-white text-lg font-bold ml-2 uppercase">
+            {appName}
           </Text>
         </View>
-        </TouchableOpacity>
 
         {/* Translate button */}
-        <TouchableOpacity className="bg-white/70 rounded-full px-4 py-1" onPress={()=>router.push("/translate")}>
+        <TouchableOpacity
+          className="bg-white/70 rounded-full px-4 py-1"
+          onPress={() => router.push("/translate")}
+        >
           <Text className="text-black">Translate</Text>
         </TouchableOpacity>
 

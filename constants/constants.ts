@@ -1,7 +1,7 @@
 import { ILanguage } from "@/types/types";
 import { images } from "./images";
 
-export const appName = "EduTechLingo";
+export const appName = "Nkyerɛaseɛ";
 
 export const languages: ILanguage[] = [
   {

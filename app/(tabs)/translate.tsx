@@ -1,4 +1,5 @@
 import { RecentTranslations } from "@/components/RecentTranslations";
+import Speech from "@/components/speech/Speech";
 import { languages, local_storage_keys } from "@/constants/constants";
 import AppLayout from "@/layouts/AppLayout";
 import usePost from "@/services/usePost";
@@ -111,6 +112,7 @@ export default function Translate() {
             <Text>{data?.translation}</Text>
           </View>
         </View>
+        <Speech text={data?.translation} language={language}/>
 
         <RecentTranslations key={count} />
       </View>

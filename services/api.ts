@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = process.env.EXPO_PUBLIC_BASE_URL;
 
 const translateLanguage = async ({
   endpoint,
@@ -7,7 +7,7 @@ const translateLanguage = async ({
   endpoint: string;
   postdata: any;
 }) => {
-  console.log("data", postdata);
+  console.log("data", BASE_URL);
   const response = await fetch(`${BASE_URL}${endpoint}`, {
     method: "POST",
     headers: {

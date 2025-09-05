@@ -40,7 +40,7 @@ export const LanguageSelection = () => {
 const LanguageCard = (props: ILanguage) => {
   return (
     <TouchableOpacity
-      className=" bg-white flex items-center justify-center rounded-lg p-2"
+      className=" bg-primary-100 flex items-center justify-center rounded-lg p-2"
       style={{ width: "47%" }}
       onPress={() => {
         localStorage.setItem("language", props.language);

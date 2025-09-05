@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-const BASE_URL = "http://localhost:3000"; 
+const BASE_URL = process.env.EXPO_PUBLIC_BASE_URL;
 
 const usePost = <T, U>(endpoint: string) => {
   const [data, setData] = useState<T | null>(null);
@@ -10,7 +10,7 @@ const usePost = <T, U>(endpoint: string) => {
   const postData = useCallback(
     async (payload: U) => {
       try {
-        setLoading(true); 
+        setLoading(true);
         setError(null);
         const response = await fetch(`${BASE_URL}${endpoint}`, {
           method: "POST",
