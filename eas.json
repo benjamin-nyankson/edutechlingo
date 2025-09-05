@@ -1,12 +1,13 @@
 {
   "build": {
     "preview": {
-      "distribution": "internal",
-      "build":[
-        "android",
-        "ios",
-        "web"
-      ]
+      "distribution": "internal"
+    },
+    "production": {
+      "distribution": "store"
     }
+  },
+  "cli": {
+    "version": ">= 3.0.0"
   }
 }
