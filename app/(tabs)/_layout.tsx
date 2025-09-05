@@ -1,45 +1,83 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
+import { Icon } from "@expo/vector-icons/build/createIconSet";
+import { Tabs } from "expo-router";
+import React from "react";
+import { Text, View } from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function _layout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarShowLabel: true,
+        tabBarItemStyle: {
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+
+        tabBarStyle: {
+          backgroundColor: "#E55F53",
+          height: 60,
+          position: "absolute",
+          overflow: "hidden",
+        },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="choose-language"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          headerShown: false,
+          title: "Home",
+          tabBarShowLabel: false,
+          tabBarIcon: ({ focused }) => {
+            return <TabIcon text="Home" name="home" icon={Ionicons} />;
+          },
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="translate"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          headerShown: false,
+          title: "Translate",
+          tabBarShowLabel: false,
+          // tabBarButton: () => null,
+          tabBarIcon: ({ focused }) => {
+            return <TabIcon text="Translate" name="language" icon={Ionicons} />;
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="lessons"
+        options={{
+          headerShown: false,
+          title: "Translate",
+          tabBarShowLabel: false,
+          // tabBarButton: () => null,
+          tabBarIcon: ({ focused }) => {
+            return <TabIcon text="Lessons" name="book" icon={Ionicons} />;
+          },
         }}
       />
     </Tabs>
   );
 }
+
+const TabIcon = ({
+  icon,
+  text,
+  name,
+}: {
+  text: string;
+  icon: Icon<any, any>;
+  name: string;
+}) => {
+  const Icon = icon;
+  return (
+    <View className=" flex items-center mt-5">
+      <Icon name={name} size={30} color="white" />
+      <Text className="text-white">{text}</Text>{" "}
+    </View>
+  );
+};
